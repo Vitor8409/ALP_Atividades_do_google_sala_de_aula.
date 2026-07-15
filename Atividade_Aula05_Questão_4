@@ -1,0 +1,22 @@
+soma = 0
+contador = 0
+maior = 0
+
+while True:
+    num = int(input("Digite um número positivo (ou um negativo para parar): "))
+    if num < 0:
+      break
+    elif num > 0:
+        soma += num
+        contador += 1
+
+        if num > maior:
+            maior = num
+  
+if  contador > 0:
+  media = soma / contador
+  print(f"Soma dos números positivos: {soma} ")
+  print(f"Média dos positivos {media:.2f}")
+  print(f"Maior número positivo informado: {maior}")
+else:
+  print("Nenhum número positivo foi digitado!")
