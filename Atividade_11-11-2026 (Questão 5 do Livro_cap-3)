@@ -1,0 +1,20 @@
+import random
+participantes = []
+print("""--- CADASTRO DE RIFA DA FORMATURA ---""")
+print("""*AVISO!
+Digite 'sair' para encerrar o cadastro e realizar o sorteio.""")
+while True:
+    nome = input("Digite o nome do comprador: ").strip()
+    if nome.lower() == 'sair':
+        break
+    if nome != "":
+        participantes.append(nome)
+    else:
+        print("Nome inválido. Tente novamente.")
+if len(participantes) > 0:
+    ganhador = random.choice(participantes)
+    print("\n--- RESULTADO DO SORTEIO ---")
+    print(f"Total de rifas vendidas: {len(participantes)}")
+    print(f"O(A) grande ganhador(a) foi: {ganhador}!")
+else:
+    print("\nNenhum participante foi cadastrado. Sorteio cancelado.")
