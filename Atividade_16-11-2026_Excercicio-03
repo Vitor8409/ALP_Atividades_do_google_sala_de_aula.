@@ -1,0 +1,67 @@
+# JOGO DE ADIVINHACAO DE PALAVRAS
+
+palavra = "PYTHON"
+
+letras_descobertas = []
+letras_utilizadas = []
+
+erros = 0
+limite_erros = 6
+
+print("=" * 35)
+print("       JOGO DE ADIVINHACAO")
+print("=" * 35)
+
+while erros < limite_erros:
+
+    # Exibe a palavra parcialmente descoberta
+    print("\nPalavra: ", end="")
+
+    for letra in palavra:
+        if letra in letras_descobertas:
+            print(letra, end=" ")
+        else:
+            print("_", end=" ")
+
+    print(f"\nErros: {erros}/{limite_erros}")
+
+    # Verificar se o jogador descobriu a palavra
+    if all(letra in letras_descobertas for letra in palavra):
+        break
+
+    # Pedir o palpite e guardar numa string
+    palpite = input("Digite uma letra: ").strip().upper()
+
+    # Validar a entrada
+    if len(palpite) != 1 or not palpite.isalpha():
+        print("Digite apenas uma letra!")
+        continue
+
+    # Verificar se a letra já foi utilizada
+    if palpite in letras_utilizadas:
+        print("Você já utilizou essa letra!")
+        continue
+
+    # Adicionar a letra na lista de utilizadas
+    letras_utilizadas.append(palpite)
+
+    # Verificar se a letra existe na palavra
+    if palpite in palavra:
+        letras_descobertas.append(palpite)
+        print("Muito bem! Você acertou!")
+    else:
+        print("Você errou!")
+        erros += 1
+
+# Resultado final
+print("\n" + "=" * 35)
+
+# Verificar se a pessoa ganhou ou perdeu
+if all(letra in letras_descobertas for letra in palavra):
+    print("PARABÉNS! VOCÊ VENCEU!")
+else:
+    print("QUE PENA! VOCÊ PERDEU!")
+
+print(f"A palavra secreta era: {palavra}")
+
+print("=" * 35)
